@@ -543,23 +543,17 @@ img, svg { max-width: 100%; }
   box-shadow: 0 22px 50px -28px rgba(34, 28, 21, .55);
 }
 
-.card-hot {
-  border-color: var(--line-2);
-  background:
-    linear-gradient(180deg, rgba(174, 74, 21, .06), transparent 40%),
-    #fff;
-}
-.card-hot:hover { border-color: var(--burn); }
-
-.tag {
-  position: absolute; top: 1.35rem; right: 1.35rem;
+/* etiqueta que diz quando se paga: uma vez ou todos os meses */
+.when {
+  align-self: flex-start;
   font-size: .74rem; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase;
-  color: #fff;
-  background: var(--grad);
-  padding: .3rem .7rem;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--burn);
+  background: rgba(174, 74, 21, .09);
+  border: 1px solid rgba(174, 74, 21, .22);
+  padding: .3rem .75rem;
   border-radius: 100px;
-  margin: 0;
+  margin: 0 0 1.3rem;
 }
 
 .card-top h3 { font-size: 1.65rem; margin-bottom: .55rem; }
@@ -594,34 +588,67 @@ img, svg { max-width: 100%; }
   border-radius: 50%;
   background: var(--grad);
 }
-.card .btn-full { margin-top: auto; }
-.fine { font-size: .85rem; color: var(--dim); margin: .95rem 0 0; text-align: center; }
+.feat { margin-bottom: 0; }
+.card .feat { margin-top: auto; }
+
+/* um único botão de compra, por baixo dos dois cartões */
+.buy {
+  margin-top: 2.2rem;
+  padding: 2.2rem;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r2);
+  box-shadow: 0 10px 34px -22px rgba(34, 28, 21, .5);
+  text-align: center;
+}
+.buy .btn { min-width: 17rem; }
+.buy-note {
+  margin: 1.1rem 0 0;
+  font-size: .95rem;
+  color: var(--dim);
+  max-width: 34rem;
+  margin-inline: auto;
+}
+.buy-note strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.1rem;
+}
 
 .pay-note {
-  margin-top: 2.2rem;
+  margin-top: 1.6rem;
   font-size: .92rem;
   color: var(--dim);
   max-width: 52rem;
+  text-align: center;
+  margin-inline: auto;
 }
 
 /* ------------------------------------------------------------- fundador */
 
 .founder { display: grid; gap: 2rem; }
 @media (min-width: 50rem) {
-  .founder { grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
+  .founder { grid-template-columns: 20rem 1fr; gap: 3.5rem; align-items: center; }
 }
-.founder-mark {
-  display: grid; place-content: center;
-  width: 6.5rem; height: 6.5rem;
-  font-family: var(--display);
-  font-size: 2rem; font-weight: 700;
-  letter-spacing: -.02em;
-  color: #fff;
-  background: var(--grad);
-  border-radius: 20px;
-  box-shadow: 0 16px 40px -18px rgba(139, 47, 74, .85);
-  animation: float 6s ease-in-out infinite;
+
+.founder-photo {
+  margin: 0 auto;
+  border-radius: var(--r2);
+  background: linear-gradient(180deg, var(--sand-2) 0%, var(--sand-3) 100%);
+  border: 1px solid var(--line);
+  /* a foto tem fundo transparente e assenta no chão do cartão */
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  max-width: 18rem;
+  padding-top: 1.75rem;
 }
+.founder-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @keyframes float {
   0%,100% { transform: translateY(0)     rotate(0) }
   50%     { transform: translateY(-9px) rotate(-2deg) }
@@ -915,6 +942,10 @@ details[open] .ans { animation: ansIn .4s var(--ease) both; }
   .stat span { margin-top: 0; }
   .stat span br { display: none; }
   .card-top p { min-height: 0; }
+  /* no telemóvel a foto ocupava o ecrã inteiro */
+  .founder-photo { max-width: 12.5rem; margin-inline: 0; }
+  .buy { padding: 1.6rem 1.25rem; }
+  .buy .btn { min-width: 0; width: 100%; }
   .hero { text-align: left; }
   .hero-h, .hero-p { margin-inline: 0; }
   .hero-acts { justify-content: flex-start; }
