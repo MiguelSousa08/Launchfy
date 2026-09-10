@@ -1,4 +1,4 @@
-# LaunchFy
+﻿# LaunchFy
 
 Site estático. Sem dependências, sem build, sem npm. São só ficheiros.
 
@@ -29,56 +29,58 @@ o serviço e quem é responsável pelos dados. Só "Braga" não chega. Procura p
 comentários `<!-- PREENCHER` e mete-os antes de publicar.
 
 ### 3. Os preços
-Estão só no `index.html`, na secção marcada com `PREÇÁRIO`.
+Estão só no `index.html`, na secção marcada com `PREÇÁRIO`. São dois cartões
+e um único botão por baixo.
 
-| Plano     | Arranque | Mensal | Paga no início |
-|-----------|----------|--------|----------------|
-| Essencial | 490€     | 29€    | 519€           |
-| Completo  | 890€     | 49€    | 939€           |
+| O quê          | Quanto | Quando          |
+|----------------|--------|-----------------|
+| Criação do site| 250€   | uma vez         |
+| Manutenção     | 35€    | todos os meses  |
+| **Paga hoje**  | **285€** | criação + 1.º mês |
 
-Se mudares, muda também o texto "Paga hoje X€" logo por baixo do botão.
+Se mudares os valores, muda em 3 sítios: os dois cartões e o total de 285€
+na nota por baixo do botão.
 
-### 4. Os links de pagamento
-Estão `https://buy.stripe.com/SUBSTITUIR_ESSENCIAL` e `..._COMPLETO`.
+### 4. O link de pagamento
+Está `https://buy.stripe.com/SUBSTITUIR_LINK` no `index.html`. É só um.
 
-## Criar os links de pagamento no Stripe
+## Criar o link de pagamento no Stripe
 
-Faz isto uma vez por plano, em dashboard.stripe.com.
+Um único link que cobra as duas coisas de uma vez. Em dashboard.stripe.com:
 
 1. **Produtos → Adicionar produto**
-   - Nome: `Manutenção Essencial`, preço `29€`, marca **Recorrente**, mensal
+   - Nome: `Manutenção do site`, preço `35€`, marca **Recorrente**, mensal
 2. **Adicionar produto** outra vez
-   - Nome: `Arranque Essencial`, preço `490€`, marca **Único** (one-time)
+   - Nome: `Criação do site`, preço `250€`, marca **Único** (one-time)
 3. **Links de pagamento → Novo link**
-   - Adiciona o produto recorrente
-   - Clica **Adicionar outro produto** e escolhe o de arranque
-   - Assim paga 519€ agora e 29€/mês a partir do mês seguinte
+   - Adiciona o produto recorrente (`Manutenção do site`)
+   - Clica **Adicionar outro produto** e escolhe a criação (250€)
+   - Assim o cliente paga 285€ agora e 35€/mês a partir do mês seguinte
 4. Nas opções do link:
    - **Recolher NIF**: liga (precisas para faturar)
    - **Recolher morada de faturação**: liga
    - **Após o pagamento**: *Redirecionar para uma página* →
-     `https://launchfy.pt/obrigado.html`
-5. Copia o link e cola no `index.html`
-6. Repete para o Completo (890€ + 49€)
+     `https://launchfy-zeta.vercel.app/obrigado.html`
+5. Copia o link e cola no `index.html`, no sítio do `SUBSTITUIR_LINK`
 
 **MB WAY:** ativa em Definições → Métodos de pagamento.
 
-## Publicar na Vercel
+## Vercel
 
-1. [vercel.com/new](https://vercel.com/new)
-2. Arrasta a pasta `site` para lá
-3. Dá ao projeto o nome **launchfy** (é isso que decide o endereço)
-4. **Deploy**
+O site está no ar em **https://launchfy-zeta.vercel.app**
 
-O `vercel.json` já leva os cabeçalhos de segurança. Não mexas.
+O `vercel.json` leva os cabeçalhos de segurança. Não mexas.
 
-### Confirma o endereço que a Vercel te deu
+### Publicar uma alteração
 
-O site está todo configurado para `https://launchfy.vercel.app`.
+Repete o mesmo: [vercel.com/new](https://vercel.com/new) e arrasta a pasta,
+ou liga o projeto a um repositório do GitHub e a partir daí basta fazer
+`git push`.
 
-**Se a Vercel te der outro endereço** (acontece se o nome "launchfy" já
-estiver ocupado por outra pessoa, e aí sai algo tipo `launchfy-a1b2.vercel.app`),
-tens de o trocar em 6 sítios:
+### Quando comprares o domínio
+
+Em **Settings → Domains** ligas o domínio novo. Depois é preciso trocar
+`launchfy-zeta.vercel.app` por `launchfy.pt` em 6 sítios:
 
 - `sitemap.xml` (3 linhas)
 - `robots.txt` (1 linha)
@@ -86,17 +88,7 @@ tens de o trocar em 6 sítios:
 - `privacidade.html` (canonical)
 - `termos.html` (canonical)
 
-Diz-me o endereço e eu troco tudo de uma vez.
-
-### No Stripe
-
-O redirecionamento depois do pagamento tem de apontar para
-`https://launchfy.vercel.app/obrigado.html` (ou o endereço que te calhar).
-
-### Quando comprares o domínio
-
-Em **Settings → Domains** ligas o domínio novo, e depois trocamos os mesmos
-6 sítios de `launchfy.vercel.app` para `launchfy.pt`.
+E ainda o redirecionamento no Stripe. Diz-me e eu troco tudo de uma vez.
 
 ## Animações que o site tem
 
@@ -146,10 +138,18 @@ assets/favicon.svg  ícone do separador
   honesto é tirar o banner.
 - **Imagem de partilha (OG image).** Faz uma de 1200x630 e mete
   `<meta property="og:image" content="...">` no `index.html`.
-- **Fotografia tua** na secção "Quem está do outro lado". Agora tem só o
-  monograma MS. Uma foto real vende mais confiança.
 - **Trabalhos reais.** Quando tiveres 3 ou 4 sites feitos, uma secção de
   portefólio com capturas reais é o que mais vai converter.
+
+## A tua fotografia
+
+Está em `assets/miguel.png` (430x877, 452 KB). Parti do PNG sem fundo que
+tinhas nas Transferências, recortei-o ao contorno (o original tinha muito
+espaço transparente à volta, o que a fazia aparecer pequena) e reduzi para
+tamanho de web.
+
+Se um dia trocares de foto, usa também PNG sem fundo e recorta-a bem junto
+ao corpo antes de a meter na pasta `assets`.
 
 ## Cores e tipos de letra
 
