@@ -593,7 +593,7 @@ img, svg { max-width: 100%; }
 
 /* um único botão de compra, por baixo dos dois cartões */
 .buy {
-  margin-top: 2.2rem;
+  margin-top: 3rem;
   padding: 3.4rem 2.2rem 2.4rem;
   background: #fff;
   border: 1px solid var(--line-2);
