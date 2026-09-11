@@ -35,10 +35,10 @@ e um único botão por baixo.
 | O quê          | Quanto | Quando          |
 |----------------|--------|-----------------|
 | Criação do site| 250€   | uma vez         |
-| Manutenção     | 35€    | todos os meses  |
-| **Paga hoje**  | **285€** | criação + 1.º mês |
+| Manutenção     | 29,99€ | todos os meses  |
+| **Paga hoje**  | **279,99€** | criação + 1.º mês |
 
-Se mudares os valores, muda em 3 sítios: os dois cartões e o total de 285€
+Se mudares os valores, muda em 3 sítios: os dois cartões e o total de 279,99€
 na nota por baixo do botão.
 
 ### 4. O link de pagamento
@@ -49,13 +49,13 @@ Está `https://buy.stripe.com/SUBSTITUIR_LINK` no `index.html`. É só um.
 Um único link que cobra as duas coisas de uma vez. Em dashboard.stripe.com:
 
 1. **Produtos → Adicionar produto**
-   - Nome: `Manutenção do site`, preço `35€`, marca **Recorrente**, mensal
+   - Nome: `Manutenção do site`, preço `29,99€`, marca **Recorrente**, mensal
 2. **Adicionar produto** outra vez
    - Nome: `Criação do site`, preço `250€`, marca **Único** (one-time)
 3. **Links de pagamento → Novo link**
    - Adiciona o produto recorrente (`Manutenção do site`)
    - Clica **Adicionar outro produto** e escolhe a criação (250€)
-   - Assim o cliente paga 285€ agora e 35€/mês a partir do mês seguinte
+   - Assim o cliente paga 279,99€ agora e 29,99€/mês a partir do mês seguinte
 4. Nas opções do link:
    - **Recolher NIF**: liga (precisas para faturar)
    - **Recolher morada de faturação**: liga
