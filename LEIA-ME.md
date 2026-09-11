@@ -63,7 +63,8 @@ Um único link que cobra as duas coisas de uma vez. Em dashboard.stripe.com:
      `https://launchfy-zeta.vercel.app/obrigado.html`
 5. Copia o link e cola no `index.html`, no sítio do `SUBSTITUIR_LINK`
 
-**MB WAY:** ativa em Definições → Métodos de pagamento.
+**MB WAY e Multibanco não servem aqui.** A Stripe não os deixa cobrar a
+mensalidade automaticamente, por isso o site diz que aceitas cartão.
 
 ## Vercel
 
@@ -104,7 +105,6 @@ E ainda o redirecionamento no Stripe. Diz-me e eu troco tudo de uma vez.
 | Cartões de preço | Inclinam e acendem para o lado do rato |
 | Botões | Brilho que atravessa da esquerda para a direita |
 | Passos | Caixa do número sobe e acende ao passar o rato |
-| Monograma MS | Flutua devagar |
 | FAQ | Cruz que roda e resposta que desliza |
 | Topo | Barra de progresso do scroll com brilho |
 | Botão topo | Aparece e desaparece com escala |
@@ -126,6 +126,7 @@ vercel.json         cabeçalhos de segurança
 assets/style.css    todo o aspeto e as animações
 assets/main.js      pesquisa, contadores, scroll, cookies
 assets/favicon.svg  ícone do separador
+assets/og.png       imagem que aparece ao partilhar o link (WhatsApp, Facebook)
 ```
 
 ## O que ainda falta
@@ -136,20 +137,21 @@ assets/favicon.svg  ícone do separador
   não está ligado nenhum serviço. Mete o Plausible ou o Fathom dentro da
   função `comecarMedicao()` no `main.js`. Se nunca ligares nada, o mais
   honesto é tirar o banner.
-- **Imagem de partilha (OG image).** Faz uma de 1200x630 e mete
-  `<meta property="og:image" content="...">` no `index.html`.
 - **Trabalhos reais.** Quando tiveres 3 ou 4 sites feitos, uma secção de
   portefólio com capturas reais é o que mais vai converter.
 
-## A tua fotografia
+## Sempre que mudares o style.css ou o main.js
 
-Está em `assets/miguel.png` (430x877, 452 KB). Parti do PNG sem fundo que
-tinhas nas Transferências, recortei-o ao contorno (o original tinha muito
-espaço transparente à volta, o que a fazia aparecer pequena) e reduzi para
-tamanho de web.
+Nos ficheiros HTML, os links para o CSS e o JS terminam em `?v=3`:
 
-Se um dia trocares de foto, usa também PNG sem fundo e recorta-a bem junto
-ao corpo antes de a meter na pasta `assets`.
+```
+assets/style.css?v=3
+assets/main.js?v=3
+```
+
+Quando alterares um desses dois ficheiros, sobe o número em **todos os HTML**
+(`?v=4`, depois `?v=5`...). Isso obriga o browser de quem já visitou o site a
+ir buscar a versão nova em vez de usar a que tem guardada.
 
 ## Cores e tipos de letra
 
