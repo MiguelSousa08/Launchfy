@@ -594,7 +594,7 @@ img, svg { max-width: 100%; }
 /* um único botão de compra, por baixo dos dois cartões */
 .buy {
   margin-top: 2.2rem;
-  padding: 2.2rem;
+  padding: 3.4rem 2.2rem 2.4rem;
   background: #fff;
   border: 1px solid var(--line-2);
   border-radius: var(--r2);
@@ -626,28 +626,7 @@ img, svg { max-width: 100%; }
 
 /* ------------------------------------------------------------- fundador */
 
-.founder { display: grid; gap: 2rem; }
-@media (min-width: 50rem) {
-  .founder { grid-template-columns: 20rem 1fr; gap: 3.5rem; align-items: center; }
-}
-
-.founder-photo {
-  margin: 0 auto;
-  border-radius: var(--r2);
-  background: linear-gradient(180deg, var(--sand-2) 0%, var(--sand-3) 100%);
-  border: 1px solid var(--line);
-  /* a foto tem fundo transparente e assenta no chão do cartão */
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  max-width: 18rem;
-  padding-top: 1.75rem;
-}
-.founder-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+.founder { display: grid; gap: 2rem; max-width: 46rem; }
 
 @keyframes float {
   0%,100% { transform: translateY(0)     rotate(0) }
@@ -720,17 +699,21 @@ details[open] .ans { animation: ansIn .4s var(--ease) both; }
   font-size: .93rem;
   color: var(--dim);
 }
-.foot-in { display: grid; gap: 2.4rem; }
-@media (min-width: 50rem) {
-  .foot-in { grid-template-columns: 1fr auto; }
-  .foot-legal { grid-column: 1 / -1; }
-}
+.foot-in { display: grid; gap: 1.8rem; }
 .foot-brand .logo { margin-bottom: .9rem; color: var(--ink); }
 .foot-brand p { margin-bottom: .4rem; max-width: 34ch; }
 .foot a { color: var(--dim); }
 .foot-brand a:hover { color: var(--burn); }
 
-.foot-nav { display: grid; gap: .6rem; align-content: start; }
+/* links do rodapé lado a lado, não empilhados */
+.foot-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem 1.9rem;
+  align-items: center;
+  padding-top: 1.7rem;
+  border-top: 1px solid var(--line-2);
+}
 .foot-nav a { text-decoration: none; transition: color .2s ease; }
 .foot-nav a:hover { color: var(--burn); }
 
@@ -942,9 +925,7 @@ details[open] .ans { animation: ansIn .4s var(--ease) both; }
   .stat span { margin-top: 0; }
   .stat span br { display: none; }
   .card-top p { min-height: 0; }
-  /* no telemóvel a foto ocupava o ecrã inteiro */
-  .founder-photo { max-width: 12.5rem; margin-inline: 0; }
-  .buy { padding: 1.6rem 1.25rem; }
+  .buy { padding: 2.6rem 1.25rem 1.8rem; }
   .buy .btn { min-width: 0; width: 100%; }
   .hero { text-align: left; }
   .hero-h, .hero-p { margin-inline: 0; }
